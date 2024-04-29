@@ -33,7 +33,12 @@ public class Patient {
 	
 	@OneToMany(mappedBy = "patient")
     private List<Address> ListAddress = new ArrayList<>();
+
+	@OneToMany(mappedBy = "patient")
+	private List<Consultation> consultations = new ArrayList<>();
 	
+	
+
 	public Patient() {
 		
 	}
@@ -120,6 +125,10 @@ public class Patient {
 
 	public List<Address> getListAddress() {
 		return ListAddress;
+	}
+	
+	public List<Consultation> getConsultations() {
+		return consultations;
 	}
 
 	@Override

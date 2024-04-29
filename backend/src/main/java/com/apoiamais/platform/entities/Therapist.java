@@ -40,7 +40,12 @@ public class Therapist {
     inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<Specialty> specialtys = new HashSet<>();
 	
-    public Therapist() {
+	@OneToMany(mappedBy = "therapist")
+	private List<Consultation> consultations = new ArrayList<>();
+	
+    
+
+	public Therapist() {
 		
 	}
 
@@ -102,6 +107,10 @@ public class Therapist {
 
 	public Set<Specialty> getSpecialtys() {
 		return specialtys;
+	}
+	
+	public List<Consultation> getConsultations() {
+		return consultations;
 	}
 
 	@Override
