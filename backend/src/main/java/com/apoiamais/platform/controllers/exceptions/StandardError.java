@@ -23,7 +23,6 @@ public class StandardError {
 		this.path = path;
 	}
 
-
 	public Instant getTimestamp() {
 		return timestamp;
 	}

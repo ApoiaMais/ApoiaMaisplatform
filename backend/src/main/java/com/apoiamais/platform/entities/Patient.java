@@ -3,7 +3,10 @@ package com.apoiamais.platform.entities;
 import java.util.Date;
 
 import jakarta.persistence.Column;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "tb_patient")
 public class Patient extends User {
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
