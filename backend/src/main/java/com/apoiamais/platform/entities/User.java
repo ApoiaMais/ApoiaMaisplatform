@@ -24,13 +24,14 @@ import jakarta.persistence.Table;
 @Table(name = "tb_user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	@Column(unique = true, nullable = false)
 	private String email;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String password;
 	
 	@OneToMany(mappedBy = "user")

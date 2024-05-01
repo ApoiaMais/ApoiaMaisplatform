@@ -4,22 +4,20 @@ import java.time.LocalDate;
 
 import com.apoiamais.platform.entities.Patient;
 
-public class PatientDTO extends UserDTO {
+public class PatientMinDTO extends UserDTO {
 	
 	private LocalDate birthDate;
 	private String cpf;
 	private String rg;
 	private String nis;
 	
-	public PatientDTO() {
+	public PatientMinDTO() {
 		
 	}
-
 	
-	
-	public PatientDTO(Long id, String name, String email, String password, LocalDate birthDate, String cpf, String rg,
-			String nis) {
-		super(id, name, email, password);
+	public PatientMinDTO(Long id, String name, String email, LocalDate birthDate, String cpf,
+			String rg, String nis) {
+		super(id, name, email, null);
 		this.birthDate = birthDate;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -28,16 +26,22 @@ public class PatientDTO extends UserDTO {
 
 
 
-	public PatientDTO(Patient entity) {
-		super(entity.getId(), entity.getName(), entity.getEmail(), entity.getPassword());
+	public PatientMinDTO(Patient entity) {
+		super(entity.getId(), entity.getName(), entity.getEmail(), null);
 		this.birthDate = entity.getBirthDate();
 		this.cpf = entity.getCpf();
 		this.rg = entity.getRg();
 		this.nis = entity.getNis();
 	}
 	
+	public PatientMinDTO(PatientDTO dto) {
+		super(dto.getId(), dto.getName(), dto.getEmail(), null);
+		this.birthDate = dto.getBirthDate();
+		this.cpf = dto.getCpf();
+		this.rg = dto.getRg();
+		this.nis = dto.getNis();
+	}
 	
-
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}

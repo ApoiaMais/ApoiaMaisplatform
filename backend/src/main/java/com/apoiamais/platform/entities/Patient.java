@@ -1,6 +1,6 @@
 package com.apoiamais.platform.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Patient extends User {
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Date birthDate;
+	private LocalDate birthDate;
 	@Column(nullable = false, unique = true)
 	private String cpf;
 	@Column(nullable = false, unique = true)
@@ -23,7 +23,7 @@ public class Patient extends User {
 
 	}
 
-	public Patient(Long id, String name, String email, String password, Date birthDate, String cpf, String rg,
+	public Patient(Long id, String name, String email, String password, LocalDate birthDate, String cpf, String rg,
 			String nis) {
 		super(id, name, email, password);
 		this.birthDate = birthDate;
@@ -32,11 +32,11 @@ public class Patient extends User {
 		this.nis = nis;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
