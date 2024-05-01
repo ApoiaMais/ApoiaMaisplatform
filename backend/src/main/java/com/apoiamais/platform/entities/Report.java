@@ -2,8 +2,6 @@ package com.apoiamais.platform.entities;
 
 import java.time.Instant;
 
-import org.springframework.cglib.core.Local;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +11,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "report")
+@Table(name = "tb_report")
 public class Report {
 
     @Id

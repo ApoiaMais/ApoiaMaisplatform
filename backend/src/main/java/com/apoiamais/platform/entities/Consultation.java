@@ -1,6 +1,8 @@
 package com.apoiamais.platform.entities;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -8,13 +10,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "consultation")
+@Table(name = "tb_consultation")
 public class Consultation {
 
     @Id
@@ -27,17 +28,11 @@ public class Consultation {
     private Integer duration;
     @OneToOne(mappedBy = "consultation", cascade = CascadeType.ALL)
     private Report report;
-
-    @ManyToOne
-	@JoinColumn(name = "patient_id")
-    private Patient patient;
     
+    @ManyToMany(mappedBy = "consultations")
+    private Set<User> users = new HashSet<>();
 
-    @ManyToOne
-	@JoinColumn(name = "therapist_id")
-    private Therapist therapist;
-
-
+    
 
     public Consultation() {
     }
@@ -110,23 +105,7 @@ public class Consultation {
         this.duration = duration;
     }
     
-    public Patient getPatient() {
-        return patient;
-    }
 
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-    
-    public Therapist getTherapist() {
-        return therapist;
-    }
-
-
-    public void setTherapist(Therapist therapist) {
-        this.therapist = therapist;
-    }
 
 
     @Override

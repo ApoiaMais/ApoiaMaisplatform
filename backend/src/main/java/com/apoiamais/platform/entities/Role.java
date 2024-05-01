@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,81 +13,50 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "specialty")
-public class Specialty {
+@Table(name = "tb_role")
+public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private String license;
+	@Column(nullable = false)
+	private String authority;
+	@ManyToMany(mappedBy = "roles")
+	private Set<User> users = new HashSet<>();
 	
-	@ManyToMany(mappedBy = "specialtys")
-	private Set<Therapist> therapists = new HashSet<>();
-	
-	
-	
-	public Specialty() {
-		
+	public Role() {
+
+
 	}
 
-
-
-	public Specialty(Long id, String name, String license) {
+	public Role(Long id, String authority) {
 		this.id = id;
-		this.name = name;
-		this.license = license;
+		this.authority = authority;
 	}
-
-
 
 	public Long getId() {
 		return id;
 	}
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
-	public String getName() {
-		return name;
+	public String getAuthority() {
+		return authority;
 	}
 
-
-
-	public void setName(String name) {
-		this.name = name;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
-
-
-	public String getLicense() {
-		return license;
+	public Set<User> getUsers() {
+		return users;
 	}
-
-
-
-	public void setLicense(String license) {
-		this.license = license;
-	}
-
-
-
-	public Set<Therapist> getTherapists() {
-		return therapists;
-	}
-
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -96,7 +66,7 @@ public class Specialty {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Specialty other = (Specialty) obj;
+		Role other = (Role) obj;
 		return Objects.equals(id, other.id);
 	}
 	

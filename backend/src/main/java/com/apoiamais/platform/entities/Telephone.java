@@ -11,20 +11,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "telephone")
+@Table(name = "tb_telephone")
 public class Telephone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ddd;
 	private String number;
-	@ManyToOne
-	@JoinColumn(name = "therapist_id")
-	private Therapist therapist;
+	
 	
 	@ManyToOne
-	@JoinColumn(name = "Patient_id")
-	private Patient patient;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 	
 	public Telephone() {
 	
@@ -38,14 +36,11 @@ public class Telephone {
 	}
 	
 	
-
-	public Telephone(Long id, String ddd, String number, Therapist therapist, Patient patient) {
-		super();
+	public Telephone(Long id, String ddd, String number, User user) {
 		this.id = id;
 		this.ddd = ddd;
 		this.number = number;
-		this.therapist = therapist;
-		this.patient = patient;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -72,20 +67,14 @@ public class Telephone {
 		this.number = number;
 	}
 
-	public Therapist getTherapist() {
-		return therapist;
+	
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setTherapist(Therapist therapist) {
-		this.therapist = therapist;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

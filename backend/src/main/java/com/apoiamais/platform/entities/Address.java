@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "address")
+@Table(name = "tb_address")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,35 +19,23 @@ public class Address {
 	private String street;
 	private String district;
 	private String city;
-	@ManyToOne
-	@JoinColumn(name = "therapist_id")
-	private Therapist therapist;
+	
 	
 	@ManyToOne
-	@JoinColumn(name = "patient_id")
-	private Patient patient;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 	
 	public Address() {
 
 	}
 
-	public Address(Long id, String street, String district, String city) {
-		this.id = id;
-		this.street = street;
-		this.district = district;
-		this.city = city;
-	}
-	
-	
 
-	public Address(Long id, String street, String district, String city, Therapist therapist, Patient patient) {
-		super();
+	public Address(Long id, String street, String district, String city, User user) {
 		this.id = id;
 		this.street = street;
 		this.district = district;
 		this.city = city;
-		this.therapist = therapist;
-		this.patient = patient;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -82,20 +70,14 @@ public class Address {
 		this.city = city;
 	}
 
-	public Therapist getTherapist() {
-		return therapist;
+	
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setTherapist(Therapist therapist) {
-		this.therapist = therapist;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
