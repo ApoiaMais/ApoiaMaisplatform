@@ -19,7 +19,7 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class NotificationService {
 
-@Autowired
+	@Autowired
 	private NotificationRepository repository;
 
 	@Transactional(readOnly = true)
@@ -38,28 +38,22 @@ public class NotificationService {
 	@Transactional
 	public NotificationDTO insert(NotificationDTO dto) {
 		Notification entity = new Notification();
-		DtoToEntity(dto, entity);
+		dtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new NotificationDTO(entity);
 	}
 
-
-    private void DtoToEntity(NotificationDTO dto, Notification entity) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'DtoToEntity'");
-    }
-
-    @Transactional
+	@Transactional
 	public NotificationDTO update(Long id, NotificationDTO dto) {
-try {
-    Notification entity = repository.getReferenceById(id);
-    entity = dtoToEntity(dto, entity);
-    repository.save(entity);
-    return new NotificationDTO(entity);
-    } catch (EntityNotFoundException erro){
-        throw new ResourceNotFoundException("erro");
-    }
-}
+		try {
+			Notification entity = repository.getReferenceById(id);
+			entity = dtoToEntity(dto, entity);
+			repository.save(entity);
+			return new NotificationDTO(entity);
+		} catch (EntityNotFoundException erro) {
+			throw new ResourceNotFoundException("erro");
+		}
+	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
@@ -78,14 +72,13 @@ try {
 
 	}
 
-
 	private Notification dtoToEntity(NotificationDTO dto, Notification entity) {
 		entity.setId(dto.getId());
 		entity.setMoment(dto.getMoment());
-        entity.setRead(dto.isRead());
-        entity.setRoute(dto.getRoute());
-        entity.setText(dto.getText());
-        return entity;
+		entity.setRead(dto.isRead());
+		entity.setRoute(dto.getRoute());
+		entity.setText(dto.getText());
+		return entity;
 
 	}
 }

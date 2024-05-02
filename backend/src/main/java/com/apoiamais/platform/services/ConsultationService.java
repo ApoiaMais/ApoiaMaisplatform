@@ -1,7 +1,5 @@
 package com.apoiamais.platform.services;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -20,8 +18,8 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ConsultationService {
-    
-    @Autowired
+
+	@Autowired
 	private ConsultationRepository repository;
 
 	@Transactional(readOnly = true)
@@ -40,28 +38,22 @@ public class ConsultationService {
 	@Transactional
 	public ConsultationDTO insert(ConsultationDTO dto) {
 		Consultation entity = new Consultation();
-		DtoToEntity(dto, entity);
+		dtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new ConsultationDTO(entity);
 	}
 
-
-    private void DtoToEntity(ConsultationDTO dto, Consultation entity) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'DtoToEntity'");
-    }
-
-    @Transactional
+	@Transactional
 	public ConsultationDTO update(Long id, ConsultationDTO dto) {
-try {
-    Consultation entity = repository.getReferenceById(id);
-    entity = dtoToEntity(dto, entity);
-    repository.save(entity);
-    return new ConsultationDTO(entity);
-    } catch (EntityNotFoundException erro){
-        throw new ResourceNotFoundException("erro");
-    }
-}
+		try {
+			Consultation entity = repository.getReferenceById(id);
+			entity = dtoToEntity(dto, entity);
+			repository.save(entity);
+			return new ConsultationDTO(entity);
+		} catch (EntityNotFoundException erro) {
+			throw new ResourceNotFoundException("erro");
+		}
+	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
@@ -80,13 +72,13 @@ try {
 
 	}
 
-
 	private Consultation dtoToEntity(ConsultationDTO dto, Consultation entity) {
 		entity.setId(dto.getId());
 		entity.setDate(dto.getDate());
 		entity.setDuration(dto.getDuration());
-        entity.setPrice(dto.getPrice());
-        entity.setStatus(dto.getStatus());;
+		entity.setPrice(dto.getPrice());
+		entity.setStatus(dto.getStatus());
+		;
 		return entity;
 	}
 }

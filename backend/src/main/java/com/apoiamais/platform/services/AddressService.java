@@ -19,7 +19,7 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class AddressService {
 
-    @Autowired
+	@Autowired
 	private AddresstRepository repository;
 
 	@Transactional(readOnly = true)
@@ -38,28 +38,22 @@ public class AddressService {
 	@Transactional
 	public AddressDTO insert(AddressDTO dto) {
 		Address entity = new Address();
-		DtoToEntity(dto, entity);
+		dtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new AddressDTO(entity);
 	}
 
-
-    private void DtoToEntity(AddressDTO dto, Address entity) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'DtoToEntity'");
-    }
-
-    @Transactional
+	@Transactional
 	public AddressDTO update(Long id, AddressDTO dto) {
-try {
-    Address entity = repository.getReferenceById(id);
-    entity = dtoToEntity(dto, entity);
-    repository.save(entity);
-    return new AddressDTO(entity);
-    } catch (EntityNotFoundException erro){
-        throw new ResourceNotFoundException("erro");
-    }
-}
+		try {
+			Address entity = repository.getReferenceById(id);
+			entity = dtoToEntity(dto, entity);
+			repository.save(entity);
+			return new AddressDTO(entity);
+		} catch (EntityNotFoundException erro) {
+			throw new ResourceNotFoundException("erro");
+		}
+	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
@@ -77,7 +71,6 @@ try {
 		}
 
 	}
-
 
 	private Address dtoToEntity(AddressDTO dto, Address entity) {
 		entity.setId(dto.getId());

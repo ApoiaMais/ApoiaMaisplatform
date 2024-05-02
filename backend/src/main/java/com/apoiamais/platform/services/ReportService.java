@@ -18,8 +18,8 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ReportService {
-    
-    @Autowired
+
+	@Autowired
 	private ReportRepository repository;
 
 	@Transactional(readOnly = true)
@@ -38,28 +38,22 @@ public class ReportService {
 	@Transactional
 	public ReportDTO insert(ReportDTO dto) {
 		Report entity = new Report();
-		DtoToEntity(dto, entity);
+		dtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new ReportDTO(entity);
 	}
 
-
-    private Report DtoToEntity(ReportDTO dto, Report entity) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'DtoToEntity'");
-    }
-
-    @Transactional
+	@Transactional
 	public ReportDTO update(Long id, ReportDTO dto) {
-try {
-    Report entity = repository.getReferenceById(id);
-    entity = DtoToEntity(dto, entity);
-    repository.save(entity);
-    return new ReportDTO(entity);
-    } catch (EntityNotFoundException erro){
-        throw new ResourceNotFoundException("erro");
-    }
-}
+		try {
+			Report entity = repository.getReferenceById(id);
+			entity = dtoToEntity(dto, entity);
+			repository.save(entity);
+			return new ReportDTO(entity);
+		} catch (EntityNotFoundException erro) {
+			throw new ResourceNotFoundException("erro");
+		}
+	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
@@ -75,6 +69,15 @@ try {
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException("Falha de integridade referencial");
 		}
+
+	}
+	
+	
+	private Report dtoToEntity(ReportDTO dto, Report entity) {
+		entity.setId(dto.getId());
+		entity.setDescription(dto.getDescription());
+		entity.setDate(dto.getDate());
+		return entity;
 
 	}
 }
