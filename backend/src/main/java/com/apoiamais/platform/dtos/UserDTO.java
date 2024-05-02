@@ -1,7 +1,6 @@
 package com.apoiamais.platform.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import com.apoiamais.platform.entities.User;
 

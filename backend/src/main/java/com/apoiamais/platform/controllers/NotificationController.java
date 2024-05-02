@@ -1,0 +1,39 @@
+package com.apoiamais.platform.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.apoiamais.platform.dtos.NotificationDTO;
+import com.apoiamais.platform.services.NotificationService;
+
+@RestController
+@RequestMapping(value = "/notifications")
+public class NotificationController {
+@Autowired
+    private NotificationService service;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<NotificationDTO> getOne(@PathVariable Long id){
+        NotificationDTO notificationDTO = service.findById(id);
+		return ResponseEntity.ok().body(notificationDTO);
+    }
+	
+	@GetMapping
+	public ResponseEntity<Page<NotificationDTO>> findAll(Pageable pageable) {
+		Page<NotificationDTO> list = service.findAllPaged(pageable);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+}

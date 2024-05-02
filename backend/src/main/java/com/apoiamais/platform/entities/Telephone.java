@@ -2,6 +2,7 @@ package com.apoiamais.platform.entities;
 
 import java.util.Objects;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -47,16 +48,16 @@ public class Telephone {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long long1) {
+		this.id = long1;
 	}
 
 	public String getDdd() {
 		return ddd;
 	}
 
-	public void setDdd(String ddd) {
-		this.ddd = ddd;
+	public void setDdd(String string) {
+		this.ddd = string;
 	}
 
 	public String getNumber() {

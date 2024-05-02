@@ -24,7 +24,7 @@ public class Consultation {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDate date;
     private Double price;
-    private String status;
+    private Status status;
     private Integer duration;
     @OneToOne(mappedBy = "consultation", cascade = CascadeType.ALL)
     private Report report;
@@ -38,7 +38,7 @@ public class Consultation {
     }
 
 
-    public Consultation(Long id, LocalDate date, Double price, String status, Integer duration) {
+    public Consultation(Long id, LocalDate date, Double price, Status status, Integer duration) {
         this.id = id;
         this.date = date;
         this.price = price;
@@ -77,12 +77,12 @@ public class Consultation {
     }
 
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
