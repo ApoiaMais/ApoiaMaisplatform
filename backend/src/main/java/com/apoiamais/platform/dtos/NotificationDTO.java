@@ -11,16 +11,18 @@ public class NotificationDTO {
     private Instant moment;
 	private boolean read;
 	private String route;
+	private Long userId;
     
     public NotificationDTO() {
     }
 
-    public NotificationDTO(Long id, String text, Instant moment, boolean read, String route) {
+    public NotificationDTO(Long id, String text, Instant moment, boolean read, String route, Long userId) {
         this.id = id;
         this.text = text;
         this.moment = moment;
         this.read = read;
         this.route = route;
+        this.userId = userId;
     }
 
     public NotificationDTO(Notification notification) {
@@ -29,6 +31,7 @@ public class NotificationDTO {
         this.moment = notification.getMoment();
         this.read = notification.isRead();
         this.route = notification.getRoute();
+        this.userId = notification.getUser().getId();
     }
 
     public Long getId() {
@@ -70,6 +73,16 @@ public class NotificationDTO {
     public void setRoute(String route) {
         this.route = route;
     }
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+    
+    
 
     
 }

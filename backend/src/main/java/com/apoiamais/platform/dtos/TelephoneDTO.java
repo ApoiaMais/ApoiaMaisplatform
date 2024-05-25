@@ -7,20 +7,28 @@ public class TelephoneDTO {
     private Long id;
     private String ddd;
     private String number;
+    private Long userId;
     
     public TelephoneDTO() {
     }
 
-    public TelephoneDTO(Long id, String ddd, String number) {
-        this.id = id;
-        this.ddd = ddd;
-        this.number = number;
-    }
+   
 
-    public TelephoneDTO(Telephone telephone) {
+    public TelephoneDTO(Long id, String ddd, String number, Long userId) {
+		super();
+		this.id = id;
+		this.ddd = ddd;
+		this.number = number;
+		this.userId = userId;
+	}
+
+
+
+	public TelephoneDTO(Telephone telephone) {
         this.id = telephone.getId();
         this.ddd = telephone.getDdd();
         this.number = telephone.getNumber();
+        this.userId = telephone.getUser().getId();
     }
 
 
@@ -47,6 +55,20 @@ public class TelephoneDTO {
     public void setNumber(String number) {
         this.number = number;
     }
+
+
+
+	public Long getUserId() {
+		return userId;
+	}
+
+
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+    
+    
 
     
 }

@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.PatientDTO;
-import com.apoiamais.platform.dtos.PatientMinDTO;
 import com.apoiamais.platform.entities.Patient;
 import com.apoiamais.platform.repositories.PatientRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
@@ -24,16 +23,16 @@ public class PatientService {
 	private PatientRepository repository;
 
 	@Transactional(readOnly = true)
-	public PatientMinDTO findById(Long id) {
+	public PatientDTO findById(Long id) {
 		Patient entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado, id inválido"));
-		return new PatientMinDTO(entity);
+		return new PatientDTO(entity);
 	}
 
 	@Transactional(readOnly = true)
-	public Page<PatientMinDTO> findAllPaged(Pageable pageable) {
+	public Page<PatientDTO> findAllPaged(Pageable pageable) {
 		Page<Patient> patients = repository.findAll(pageable);
-		return patients.map(item -> new PatientMinDTO(item));
+		return patients.map(item -> new PatientDTO(item));
 	}
 
 	@Transactional
@@ -45,12 +44,12 @@ public class PatientService {
 	}
 
 	@Transactional
-	public PatientMinDTO update(Long id, PatientMinDTO dto) {
+	public PatientDTO update(Long id, PatientDTO dto) {
 		try {
 			Patient entity = repository.getReferenceById(id);
-			entity = minDtoToEntity(dto, entity);
+			entity = dtoToEntity(dto, entity);
 			repository.save(entity);
-			return new PatientMinDTO(entity);
+			return new PatientDTO(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id inválido, Recurso não encontrado");
 
@@ -75,24 +74,22 @@ public class PatientService {
 	}
 
 	private Patient dtoToEntity(PatientDTO dto, Patient entity) {
-		entity.setName(dto.getName());
+		entity.setName(dto.getEmail());
 		entity.setEmail(dto.getEmail());
-		entity.setPassword(dto.getPassword());
-		entity.setBirthDate(dto.getBirthDate());
 		entity.setCpf(dto.getCpf());
-		entity.setRg(dto.getRg());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setUriPhoto(dto.getUriPhoto());
 		entity.setNis(dto.getNis());
+		entity.setPassword("123456789101213");
 		return entity;
 	}
 
-	private Patient minDtoToEntity(PatientMinDTO dto, Patient entity) {
+	/*private Patient minDtoToEntity(PatientMinDTO dto, Patient entity) {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
-		entity.setPassword(dto.getPassword());
 		entity.setBirthDate(dto.getBirthDate());
 		entity.setCpf(dto.getCpf());
-		entity.setRg(dto.getRg());
 		entity.setNis(dto.getNis());
 		return entity;
-	}
+	}*/
 }

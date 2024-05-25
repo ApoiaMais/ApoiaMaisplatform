@@ -8,6 +8,6 @@ import com.apoiamais.platform.entities.Address;
 @Repository
 public interface AddresstRepository extends JpaRepository<Address, Long>{
 
-    
+ 
 
 }

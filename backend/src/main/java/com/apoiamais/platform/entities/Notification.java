@@ -25,8 +25,9 @@ public class Notification {
 	private Instant moment;
 	private boolean read;
 	private String route;
+	
 	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	public Notification() {
@@ -87,6 +88,18 @@ public class Notification {
 	public void setRoute(String route) {
 		this.route = route;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 
 	@Override
 	public int hashCode() {

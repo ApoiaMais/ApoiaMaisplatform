@@ -1,65 +1,39 @@
 package com.apoiamais.platform.dtos;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
 
 import com.apoiamais.platform.entities.Patient;
+import com.apoiamais.platform.entities.Role;
 
 public class PatientDTO extends UserDTO {
 	
-	private LocalDate birthDate;
-	private String cpf;
-	private String rg;
 	private String nis;
-	
+
 	public PatientDTO() {
-		
 	}
 
-	
-	
-	public PatientDTO(Long id, String name, String email, String password, LocalDate birthDate, String cpf, String rg,
+	public PatientDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto,
 			String nis) {
-		super(id, name, email, password);
-		this.birthDate = birthDate;
-		this.cpf = cpf;
-		this.rg = rg;
+		super(id, name, email, cpf, birthDate, uriPhoto);
 		this.nis = nis;
 	}
 
-
-
+	public PatientDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto,
+			List<Role> roles, String nis) {
+		super(id, name, email, cpf, birthDate, uriPhoto, roles);
+		this.nis = nis;
+	}
+	
 	public PatientDTO(Patient entity) {
-		super(entity.getId(), entity.getName(), entity.getEmail(), entity.getPassword());
-		this.birthDate = entity.getBirthDate();
-		this.cpf = entity.getCpf();
-		this.rg = entity.getRg();
+		super(entity.getId(), entity.getName(), entity.getEmail(),
+				entity.getCpf(), entity.getBirthDate(), entity.getUriPhoto());
 		this.nis = entity.getNis();
-	}
-	
-	
-
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
+		for (GrantedAuthority role : entity.getAuthorities()) {
+			this.getRoles().add(role.getAuthority());
+		}
 	}
 
 	public String getNis() {
@@ -69,10 +43,6 @@ public class PatientDTO extends UserDTO {
 	public void setNis(String nis) {
 		this.nis = nis;
 	}
-
-	
-	
-	
 	
 	
 }

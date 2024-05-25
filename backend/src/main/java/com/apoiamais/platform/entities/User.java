@@ -1,14 +1,18 @@
 package com.apoiamais.platform.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,20 +23,27 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "tb_user")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class User implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	private String email;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false, unique = true)
+	private String cpf;
+	private String uriPhoto;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private LocalDate birthDate;
+	
 	
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications = new ArrayList<>();
@@ -48,7 +59,7 @@ public abstract class User {
 	inverseJoinColumns = @JoinColumn(name = "consultation_id"))
 	private Set<Consultation> consultations = new HashSet<>(); 
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"),
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
@@ -57,11 +68,15 @@ public abstract class User {
 
 	}
 
-	public User(Long id, String name, String email, String password) {
+	public User(Long id, String name, String email, String password, String cpf,
+			String uriPhoto, LocalDate birthDate) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.cpf = cpf;
+		this.uriPhoto = uriPhoto;
+		this.birthDate = birthDate;
 	}
 
 	public Long getId() {
@@ -96,7 +111,30 @@ public abstract class User {
 		this.password = password;
 	}
 	
-	
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getUriPhoto() {
+		return uriPhoto;
+	}
+
+	public void setUriPhoto(String uriPhoto) {
+		this.uriPhoto = uriPhoto;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
 
 	public List<Notification> getNotifications() {
 		return notifications;
@@ -114,30 +152,64 @@ public abstract class User {
 		return consultations;
 	}
 
-	public Set<Role> getRoles() {
+	public void addRole(Role role) {
+    	roles.add(role);
+    }
+    
+    
+	public boolean hasRole(String roleName) {
+		for (Role role : roles) {
+			if (role.getAuthority().equals(roleName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return roles;
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public String getUsername() {
+		return email;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return Objects.equals(id, other.id);
+	public boolean isAccountNonExpired() {
+		return true;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
 	
 }

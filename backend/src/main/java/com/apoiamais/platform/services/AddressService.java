@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.AddressDTO;
 import com.apoiamais.platform.entities.Address;
+import com.apoiamais.platform.entities.User;
 import com.apoiamais.platform.repositories.AddresstRepository;
+import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
 
@@ -21,6 +23,8 @@ public class AddressService {
 
 	@Autowired
 	private AddresstRepository repository;
+	@Autowired
+	private UserRepository userRepository;
 
 	@Transactional(readOnly = true)
 	public AddressDTO findById(Long id) {
@@ -39,6 +43,8 @@ public class AddressService {
 	public AddressDTO insert(AddressDTO dto) {
 		Address entity = new Address();
 		dtoToEntity(dto, entity);
+		User user = userRepository.getReferenceById(dto.getUserId());
+		entity.setUser(user);
 		entity = repository.save(entity);
 		return new AddressDTO(entity);
 	}
@@ -50,6 +56,7 @@ public class AddressService {
 			entity = dtoToEntity(dto, entity);
 			repository.save(entity);
 			return new AddressDTO(entity);
+			
 		} catch (EntityNotFoundException erro) {
 			throw new ResourceNotFoundException("erro");
 		}

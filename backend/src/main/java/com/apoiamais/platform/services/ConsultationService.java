@@ -28,12 +28,14 @@ public class ConsultationService {
 				.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado, id inválido"));
 		return new ConsultationDTO(entity);
 	}
-
+	
+	
 	@Transactional(readOnly = true)
 	public Page<ConsultationDTO> findAllPaged(Pageable pageable) {
 		Page<Consultation> consultation = repository.findAll(pageable);
 		return consultation.map(item -> new ConsultationDTO(item));
 	}
+	
 
 	@Transactional
 	public ConsultationDTO insert(ConsultationDTO dto) {
