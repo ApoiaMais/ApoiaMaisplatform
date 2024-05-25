@@ -1,32 +1,31 @@
 package com.apoiamais.platform.dtos;
 
-import com.apoiamais.platform.entities.Consultation;
-import com.apoiamais.platform.entities.Report;
-
 import java.time.Instant;
+
+import com.apoiamais.platform.entities.Report;
 
 public class ReportDTO {
 
     private Long id;
     private Instant date;
     private String description;
-    private Consultation consultation;
+    private Long consultationId;
     
     public ReportDTO() {
     }
 
-    public ReportDTO(Long id, Instant date, String description, Consultation consultation) {
+    public ReportDTO(Long id, Instant date, String description, Long consultationId) {
         this.id = id;
         this.date = date;
         this.description = description;
-        this.consultation = consultation;
+        this.consultationId = consultationId;
     }
 
     public ReportDTO(Report report) {
         this.id = report.getId();
         this.date = report.getDate();
         this.description = report.getDescription();
-        this.consultation = report.getConsultation();
+        this.consultationId = report.getConsultation().getId();
     }
 
     public Long getId() {
@@ -53,12 +52,12 @@ public class ReportDTO {
         this.description = description;
     }
 
-    public Consultation getConsultation() {
-        return consultation;
+    public Long getConsultationId() {
+        return consultationId;
     }
 
-    public void setConsultation(Consultation consultation) {
-        this.consultation = consultation;
+    public void setConsultation(Long consultationId) {
+        this.consultationId = consultationId;
     }
 
     

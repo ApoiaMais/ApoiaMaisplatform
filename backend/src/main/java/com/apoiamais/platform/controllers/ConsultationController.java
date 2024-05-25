@@ -30,6 +30,7 @@ public class ConsultationController {
         ConsultationDTO consultationDTO = service.findById(id);
 		return ResponseEntity.ok().body(consultationDTO);
     }
+    
 	
 	@GetMapping
 	public ResponseEntity<Page<ConsultationDTO>> findAll(Pageable pageable) {

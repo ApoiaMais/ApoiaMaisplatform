@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.NotificationDTO;
 import com.apoiamais.platform.entities.Notification;
+import com.apoiamais.platform.entities.User;
 import com.apoiamais.platform.repositories.NotificationRepository;
+import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
 
@@ -21,6 +23,8 @@ public class NotificationService {
 
 	@Autowired
 	private NotificationRepository repository;
+	@Autowired
+	private UserRepository userRepository;
 
 	@Transactional(readOnly = true)
 	public NotificationDTO findById(Long id) {
@@ -39,6 +43,8 @@ public class NotificationService {
 	public NotificationDTO insert(NotificationDTO dto) {
 		Notification entity = new Notification();
 		dtoToEntity(dto, entity);
+		User user = userRepository.getReferenceById(dto.getUserId());
+		entity.setUser(user);
 		entity = repository.save(entity);
 		return new NotificationDTO(entity);
 	}

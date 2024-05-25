@@ -5,9 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.apoiamais.platform.entities.Consultation;
 
+
 @Repository
 public interface ConsultationRepository extends JpaRepository<Consultation, Long>{
 
-    
 
 }

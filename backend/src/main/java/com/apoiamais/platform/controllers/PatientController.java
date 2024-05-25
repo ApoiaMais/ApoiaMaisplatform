@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.apoiamais.platform.dtos.PatientDTO;
-import com.apoiamais.platform.dtos.PatientMinDTO;
 import com.apoiamais.platform.services.PatientService;
 
 @RestController
@@ -28,27 +27,26 @@ public class PatientController {
 	private PatientService service;
 
 	@GetMapping("/{id}")
-	public ResponseEntity<PatientMinDTO> findById(@PathVariable Long id) {
-		PatientMinDTO dto = service.findById(id);
+	public ResponseEntity<PatientDTO> findById(@PathVariable Long id) {
+		PatientDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<PatientMinDTO>> findAll(Pageable pageable) {
-		Page<PatientMinDTO> list = service.findAllPaged(pageable);
+	public ResponseEntity<Page<PatientDTO>> findAll(Pageable pageable) {
+		Page<PatientDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 
 	@PostMapping
-	public ResponseEntity<PatientMinDTO> insert(@RequestBody PatientDTO dto) {
+	public ResponseEntity<PatientDTO> insert(@RequestBody PatientDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
-		PatientMinDTO patientMinDTO = new PatientMinDTO(dto);
-		return ResponseEntity.created(uri).body(patientMinDTO);
+		return ResponseEntity.created(uri).body(dto);
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<PatientMinDTO> update(@PathVariable Long id, @RequestBody PatientMinDTO dto) {
+	public ResponseEntity<PatientDTO> update(@PathVariable Long id, @RequestBody PatientDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}

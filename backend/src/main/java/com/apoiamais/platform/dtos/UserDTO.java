@@ -2,6 +2,13 @@ package com.apoiamais.platform.dtos;
 
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+
+import com.apoiamais.platform.entities.Role;
 import com.apoiamais.platform.entities.User;
 
 public class UserDTO {
@@ -9,25 +16,49 @@ public class UserDTO {
 	private Long id;
 	private String name;
 	private String email;
-	private String password;
+	private String cpf;
+	private LocalDate birthDate;
+	private String uriPhoto;
+	private List<String> roles =  new ArrayList<>();
 	
 	public UserDTO() {
 		
 	}
 	
-	public UserDTO(Long id, String name, String email, String password) {
+	
+
+	public UserDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto, List<Role> roles) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.password = password;
+		this.cpf = cpf;
+		this.birthDate = birthDate;
+		this.uriPhoto = uriPhoto;
+		for (GrantedAuthority role : roles) {
+			this.roles.add(role.getAuthority());
+		}
+	}
+	
+	public UserDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto) {
+		this.name = name;
+		this.email = email;
+		this.cpf = cpf;
+		this.birthDate = birthDate;
+		this.uriPhoto = uriPhoto;
 	}
 
-	public UserDTO(User entity) {
 
+
+	public UserDTO(User entity) {
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
-		password = entity.getPassword();
+		cpf = entity.getCpf();
+		uriPhoto = entity.getUriPhoto();
+		birthDate = entity.getBirthDate();
+		for (GrantedAuthority role : entity.getAuthorities()) {
+			roles.add(role.getAuthority());
+		}
 	}
 
 	public Long getId() {
@@ -54,17 +85,47 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+
+
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
-	
 
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+
+
+	public String getUriPhoto() {
+		return uriPhoto;
+	}
+
+
+
+	public void setUriPhoto(String uriPhoto) {
+		this.uriPhoto = uriPhoto;
+	}
+
+
+
+	public List<String> getRoles() {
+		return roles;
+	}
 	
 	
 	

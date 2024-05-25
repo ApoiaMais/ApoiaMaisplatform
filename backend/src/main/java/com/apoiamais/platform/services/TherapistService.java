@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.TherapistDTO;
-import com.apoiamais.platform.dtos.TherapistMinDTO;
 import com.apoiamais.platform.entities.Therapist;
 import com.apoiamais.platform.repositories.TherapistRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
@@ -24,16 +23,16 @@ public class TherapistService {
 	private TherapistRepository repository;
 
 	@Transactional(readOnly = true)
-	public TherapistMinDTO findById(Long id) {
+	public TherapistDTO findById(Long id) {
 		Therapist entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado, id inválido"));
-		return new TherapistMinDTO(entity);
+		return new TherapistDTO(entity);
 	}
 
 	@Transactional(readOnly = true)
-	public Page<TherapistMinDTO> findAllPaged(Pageable pageable) {
+	public Page<TherapistDTO> findAllPaged(Pageable pageable) {
 		Page<Therapist> patients = repository.findAll(pageable);
-		return patients.map(item -> new TherapistMinDTO(item));
+		return patients.map(item -> new TherapistDTO(item));
 	}
 
 	@Transactional
@@ -45,12 +44,12 @@ public class TherapistService {
 	}
 
 	@Transactional
-	public TherapistMinDTO update(Long id, TherapistMinDTO dto) {
+	public TherapistDTO update(Long id, TherapistDTO dto) {
 		try {
 			Therapist entity = repository.getReferenceById(id);
-			entity = minDtoToEntity(dto, entity);
+			entity = dtoToEntity(dto, entity);
 			repository.save(entity);
-			return new TherapistMinDTO(entity);
+			return new TherapistDTO(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id inválido, Recurso não encontrado");
 
@@ -77,20 +76,20 @@ public class TherapistService {
 	private Therapist dtoToEntity(TherapistDTO dto, Therapist entity) {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
-		entity.setPassword(dto.getPassword());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setPassword("123456789");
 		entity.setCpf(dto.getCpf());
 		entity.setUriPhoto(dto.getUriPhoto());
 		entity.setLicense(dto.getLicense());
 		return entity;
 	}
 
-	private Therapist minDtoToEntity(TherapistMinDTO dto, Therapist entity) {
+	/*private Therapist minDtoToEntity(TherapistMinDTO dto, Therapist entity) {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
-		entity.setPassword(dto.getPassword());
 		entity.setCpf(dto.getCpf());
 		entity.setUriPhoto(dto.getUriPhoto());
 		entity.setLicense(dto.getLicense());
 		return entity;
-	}
+	}*/
 }

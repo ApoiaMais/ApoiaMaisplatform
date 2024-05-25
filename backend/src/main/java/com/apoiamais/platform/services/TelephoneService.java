@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.TelephoneDTO;
 import com.apoiamais.platform.entities.Telephone;
+import com.apoiamais.platform.entities.User;
 import com.apoiamais.platform.repositories.TelephoneRepository;
+import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
 
@@ -21,6 +23,9 @@ public class TelephoneService {
 
 	@Autowired
 	private TelephoneRepository telephoneRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Transactional(readOnly = true)
 	public Page<TelephoneDTO> findAllPaged(Pageable pageable) {
@@ -39,6 +44,8 @@ public class TelephoneService {
 	public TelephoneDTO insert(TelephoneDTO dto) {
 		Telephone entity = new Telephone();
 		entity = dtoToEntity(dto, entity);
+		User user = userRepository.getReferenceById(dto.getUserId());
+		entity.setUser(user);
 		entity = telephoneRepository.save(entity);
 		return new TelephoneDTO(entity);
 	}
