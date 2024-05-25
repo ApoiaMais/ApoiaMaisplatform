@@ -28,6 +28,17 @@
     text-align: center;
 }
 
+.icon{
+    height: 20rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #8985F2;
+}
 .servicos{
     height: 40rem;
     width: 100vw;
@@ -37,7 +48,7 @@
     text-align: center;
     align-items: center;
     flex-wrap: nowrap;
-    background-color: #8985F2;
+
 }
 
 .servicos p {
@@ -95,4 +106,10 @@ h1{
     height: auto;
     width: 50rem;
 }
+
+.row{
+    display: flex;
+}
+
+
 
