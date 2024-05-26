@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: #fff;
+    font-family: "Roboto", sans-serif;
+}
+
+/*-----------------------------navbar styles----------------------------*/
+a, a:hover {
+    text-decoration: none;
+    color: unset;
+    text-emphasis: none;
+}
+
+header {
+    height: 72px;
+    background-color: #fff;
+    border-bottom: solid 1px ;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    max-width: 100% - 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    display: block;
+    display: flex;
+}
+
+.navagation-container {
+    display: flex;
+}
+
+.navagation-container a {
+    margin-left: 42px;
+    color: #241249;
+    font-size: 16px;
+}
+
+.navagation-container a:hover {
+    font-weight: bold;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #241249;
+}
+
+.photo-perfil img {
+    width: 54px;
+}
+
+.perfil-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 200px;
+}
+
+.name-perfil {
+    font-size: 16px;
+    font-weight: bold;
+    color: #241249;
+    cursor: pointer;
+}
+
+/*--------------------------- inputs styles ---------------------------------*/
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 43px;
+}
+
+.agenda-title {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #241249;
+    margin-bottom: 41px;
+}
+
+.agenda-container {
+    width: 650px;
+    height: 570px;
+    border: solid #5127A4 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 17px;
+}
+
+/* ----------------------------- card styles ----------------------------*/
+
+.agenda-perfil-card {
+    width: 342px;
+    height: 230px;
+    padding: 0 20px;
+    
+}
+
+.agenda-perfil-card-1 {
+    background-color: #9278C7;
+    width: 100%;
+    height: 164px;
+    border-radius: 7px 7px 0 0;
+    padding-top: 10px;
+    
+}
+
+.part1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 17px;
+    margin-bottom: 10px;
+}
+
+.agenda-perfil-card-1 img {
+    width: 110px;
+    border: solid #241249 2px;
+    border-radius: 50%;
+}
+
+.agenda-perfil-card-1 {
+   color: #fff;
+   font-weight: bold;
+   font-size: 12px;
+}
+
+.duration-consultation {
+    width: 138px;
+    height: 40px;
+    background-color:  #B6A9D0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.agenda-perfil-card-name {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 17px;
+}
+
+.agenda-perfil-card-2 {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    background-color: #fff;
+    border-left: solid #d9d9d9 3px;
+    border-bottom: solid #d9d9d9 3px;
+    border-right: solid #d9d9d9 3px;
+    padding-top: 12px;
+}
+
+.agenda-perfil-card-2 span {
+    font-size: 12px;
+}
+
+/*-------------------------------------------Fim card-styles -------------------------*/
+
+/* ---------------------- form styles -------------------------*/
+
+
+.form-control {
+    width: 500px;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.form-control input {
+    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 20px;
+    font-size: 14px;
+    border: 0;
+    list-style: none;
+    background-color: #d9d9d9;
+}
+
+.form-control label {
+    display: none;
+    visibility: hidden;
+}
+
+.form-input::placeholder {
+    color: #5127A4;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-agendar {
+    width: 317px;
+    height: 60px;
+    background-color: #5127A4;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    cursor: pointer;
+}

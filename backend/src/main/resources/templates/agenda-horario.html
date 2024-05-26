@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoia+</title>
+    <link rel="stylesheet" href="/frontend/src/css/agenda-horario.css">
+<body>
+    <header>
+        <nav>
+            <h1 class="title">Apoia+</h1>
+            <div class="navagation-container">
+                <ul>
+                    <li><a href="#">Agenda consulta</a></li>
+                    <li><a href="#">Consultas</a></li>
+                    <li><a href="#">Notificações</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Sair</a></li>
+                </ul>
+            </div>
+            <div class="perfil-card">
+                <div class="photo-perfil"><img src="/assets/Ellipse1.png" alt=""></div>
+                <div class="name-perfil">Leandro Sobral</div>
+            </div>
+            
+        </nav>
+    </header>
+<main>
+    <section>
+        <h2 class="agenda-title">Agende sua consulta aqui</h2>
+            <div class="agenda-container">
+                <!----------------------- card-html ------------------------------------------>
+                <div class="agenda-perfil-card">
+                    <div class="agenda-perfil-card-1">
+                        <div class="part1">
+                            <img src="/assets/Ellipse1.png" alt="homem sorrindo">
+                            <div class="duration-consultation"><span>DURAÇÃO 50 minutos</span></div>
+                        </div>
+                        <span class="agenda-perfil-card-name">Guilherme Antony Davino</span>
+                    </div>
+                    <div class="agenda-perfil-card-2">
+                        <span>Psicólogo Clínico</span>
+                        <span>06060 - CRP - 6 ° Região</span>
+                        <span>Recife - PE</span>
+                    </div>
+                </div>
+                <div>
+                <!----------------------- fim do card-html ------------------------------------------>
+                <div class="card-form">  
+                    <form name="newConsultation">
+                        <div class="form-control">
+                            <label for="date">Selecione uma data</label>
+                            <input type="datetime-local" id="date" name="date" class="form-input">
+                        </div>
+                        <div class="form-control">
+                            <label for="date">Descrição</label>
+                            <input name="description" id="description" type="text" class="form-input" placeholder="Descrição">
+                        </div>
+                    </form>
+                </div>  
+                    <div class="btn-agendar">Agendar consulta</div>
+                </div>
+            </div>
+    </section>
+</main>
+</body>
+</html>

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apoiamais.platform.dtos.UserDTO;
+import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
+	
 	
 	@Autowired
     private UserService service;
@@ -35,7 +37,7 @@ public class UserController {
     }
 	
 	@GetMapping
-	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) { 
+	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
 		
 		Page<UserDTO> list = service.findAllPaged(pageable);
 		
@@ -47,4 +49,6 @@ public class UserController {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+
+	
 }

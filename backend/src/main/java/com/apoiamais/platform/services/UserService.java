@@ -96,4 +96,8 @@ public class UserService implements UserDetailsService {
 		return new UserDTO(entity);
 	}
 
+    public void registerUser(User user) {
+        repository.save(user);
+    }
+
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoia+</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1 class="title">Apoia+</h1>
+            <div class="navigation-container">
+                <ul>
+                    <li><a th:href="@{#inicio}">Início</a></li>
+                    <li><a th:href="@{#sobre}">Sobre</a></li>
+                    <li><a th:href="@{#servicos}">Serviços</a></li>
+                    <li><a th:href="@{#}">Contato</a></li>
+                    <li><a th:href="@{#}">Dúvidas</a></li>
+                </ul>
+            </div>
+            <div class="btns-nav">
+                <div class="btn-sign-in"><a th:href=@{/login}>Entrar</a></div>
+                <div class="btn-sign-up"><a th:href=@{/cadastro}>Cadastrar</a></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="inicio">
+            <div class="inicio-container">
+                <div class="text-inicio">
+                    <div class="title-inicio">
+                        <h2><span>Apoia+</span> é para todo mundo</h2>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="img-container"><img th:src="@{/assets/sofamulherres.png}" alt="conversa-mulheres"></div>
+            </div>
+        </section>
+        <section id="sobre">
+            <div class="sobre-container">
+                <div class="sobre-block">
+                    <h3>Quem somos</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="sobre-block">
+                    <h3>O que oferecemos?</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+            <div class="sobre-faixa">
+                <div class="faixa-container">
+                    <img th:src="@{/assets/Ellipse1.png}" alt="Rapaz sorrindo">
+                    <img th:src="@{/assets/Ellipse1.png}" alt="Rapaz sorrindo">
+                    <img th:src="@{/assets/Ellipse1.png}" alt="Rapaz sorrindo">
+                </div>
+            </div>
+        </section>
+        <section id="servicos">
+            <div class="servicos-container">
+                <div class="servicos-card">
+                    <img th:src="@{/assets/sofamulherres.png}" alt="conversa-mulheres">
+                    <h3>Terapia online</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="servicos-card">
+                    <img th:src="@{/assets\sofamulherres.png}" alt="conversa-mulheres">
+                    <h3>Terapia online</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="servicos-card">
+                    <img th:src="@{/assets/sofamulherres.png}" alt="conversa-mulheres">
+                    <h3>Terapia online</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
