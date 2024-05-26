@@ -1,7 +1,7 @@
 INSERT INTO tb_role(authority) VALUES('ROLE_CLIENT');
 INSERT INTO tb_role(authority) VALUES('ROLE_ADMIN');
 
-INSERT INTO tb_user(name, email, password, cpf, uri_photo, birth_date) VALUES('João Silva', 'joao.silva@example.com', 'senha123', '111.11111.11-1', 'photo', '1980-01-01');
+INSERT INTO tb_user(name, email, password, cpf, uri_photo, birth_date) VALUES('João Silva', 'joao.silva@example.com', '$2a$10$N7SkKCa3r17ga.i.dF9iy.BFUBL2n3b6Z1CWSZWi/qy7ABq/E6VpO', '111.11111.11-1', 'photo', '1980-01-01');
 INSERT INTO tb_user(name, email, password, cpf, uri_photo, birth_date) VALUES('Maria Santos', 'maria.santos@example.com', 'senha456', '222.22222.22-2', 'photo', '1980-01-02');
 INSERT INTO tb_user(name, email, password, cpf, uri_photo, birth_date) VALUES('Paulo Oliveira', 'paulo.oliveira@example.com', 'senha789', '333.33333.33-3', 'photo', '1980-01-03');
 INSERT INTO tb_user(name, email, password, cpf, uri_photo, birth_date) VALUES('Ana Pereira', 'ana.pereira@example.com', 'senha012', '444.44444.44-4', 'photo', '1980-01-04');
@@ -27,6 +27,10 @@ INSERT INTO tb_therapist (license, id) VALUES ('LIC456', 7);
 INSERT INTO tb_therapist (license, id) VALUES ('LIC789', 8);
 INSERT INTO tb_therapist (license, id) VALUES ('LIC012', 9);
 INSERT INTO tb_therapist (license, id) VALUES ('LIC345', 10);
+
+INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 
 INSERT INTO tb_address(id, street,  district, city, user_id) VALUES (1, 'Rua das Flores', 'Centro', 'Recife', 1);
 INSERT INTO tb_address(id, street,  district, city, user_id) VALUES (2, 'Avenida Boa Viagem', 'Boa Viagem', 'Recife', 2);

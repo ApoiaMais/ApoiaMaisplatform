@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Apoia+</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/telapac.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Início</a></li>
+                <li><a th:href="@{/sobre}">Sobre</a></li>
+                <li><a th:href="@{/servicos}">Serviços</a></li>
+                <li><a th:href="@{/contato}">Contato</a></li>
+                <li><a th:href="@{/duvidas}">Dúvidas</a></li>
+                <li><a th:href="@{/entrar}"><span>Entrar</span></a></li>
+                <li><a th:href="@{/cadastrar}"><span class="sing">Cadastrar</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Encontre um profissional</h2>
+            <form th:action="@{/pesquisar}" method="post">
+                <label for="professional">Pesquise por nome ou formação:</label>
+                <input type="text" id="professional" name="professional">
+                <button type="submit">Pesquisar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Horários disponíveis</h2>
+            <div class="horario">
+                <div th:each="professional : ${professionals}">
+                    <div class="foto">
+                        <img th:src="@{${professional.photoUrl}}" alt="Foto de ${professional.name}">
+                    </div>
+                    <div>
+                        <h3 th:text="${therapists.name}">"${therapists}"</h3>
+                        <p>Formação: <span th:text="${professional.formation}">[Formação]</span></p>
+                        <p>Cidade: <span th:text="${professional.city}">[Cidade]</span></p>
+                    </div>
+                    <div>
+                        <p>Horários: <span th:text="${professional.schedule}">06:10, 08:10</span></p>
+                    </div>
+                    <div>
+                        <p>Valor: <span th:text="${professional.price}">$08:10</span></p>
+                    </div>
+                    <div>
+                        <p th:text="${professional.description}">descrição</p>
+                    </div>
+                    <button th:onclick="'agendar(' + ${professional.id} + ')'">Agendar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+    <script>
+        // Example of how you could fetch data from the backend and update the page dynamically using Thymeleaf
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('http://localhost:8080/therapists')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Here you would typically use something like Thymeleaf's th:if, th:each, etc. to render this data
+                });
+        });
+    </script>
+</body>
+</html>
