@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apoiamais.platform.dtos.UserDTO;
-import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.UserService;
 
 @RestController

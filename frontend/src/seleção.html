@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seleção de função</title>
+</head>
+<body>
+    <h1 th:text="${title}">Bem vindo ao Apoia+</h1>
+    <p th:text="${description}">Selecione</p>
+    <form action="#" th:action="@{/submit-role}" method="post">
+        <label th:for="patient">Email:</label>
+        <input type="radio" id="patient" th:field="*{patient}">
+        <br>
+        <input type="radio" id="Therapis" th:field="*{Therapis}">
+        <label for="psychologist">Psychologist</label>
+        <br>
+        <button type="submit">selecionar</button>
+    </form>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.apoiamais.platform.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -92,4 +93,15 @@ public class TherapistService {
 		entity.setLicense(dto.getLicense());
 		return entity;
 	}*/
+
+	public boolean save(Therapist therapist) {
+        try {
+            repository.save(therapist);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+

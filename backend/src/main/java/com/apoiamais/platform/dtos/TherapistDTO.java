@@ -41,7 +41,5 @@ public class TherapistDTO extends UserDTO {
 		this.license = license;
 	}
 	
-	
-	
-	
+
 }

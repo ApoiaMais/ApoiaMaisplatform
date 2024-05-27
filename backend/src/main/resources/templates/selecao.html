@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seleção de Tipo de Usuário</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Selecione o Tipo de Usuário</h1>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <form th:action="@{/cadastro/paciente}" method="get">
+                    <button class="btn btn-primary" type="submit">Paciente</button>
+                </form>
+            </div>
+            <div class="col text-center">
+                <form th:action="@{/cadastro/psicologo}" method="get">
+                    <button class="btn btn-primary" type="submit">Psicólogo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

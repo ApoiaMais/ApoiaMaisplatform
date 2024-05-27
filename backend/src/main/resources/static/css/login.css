@@ -87,36 +87,71 @@ ul {
     cursor: pointer;
 }
 
-/*------------------------------------------- content styles -----------------------------------*/
+/* ------------------------------------ content-login styles -------------------------------*/
 
 section {
-    padding-top: 30px;
+    padding-top: 126px;
 }
 
-.form-container {
-    margin-top: 22px;
-}
-
-.container-register {
-    width: 1096px;
-    height: 100%;
+.content-container {
+    width: calc(100% - 82px);
+    height: 450px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-text {
+    width: 700px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.container-register h2 {
+.welcome-text {
     font-size: 64px;
     font-weight: bold;
     color: #241249;
 }
 
-.form-control {
-    margin-bottom: 20px;
+.content-text p {
+    font-size: 32px;
+    font-weight: 500;
+    color: #241249;
+}
+
+.name-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #5127A4;
+}
+
+.form-container {
+    width: 607px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.form-control {
+    width: 500px;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.form-input {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 20px;
+    font-size: 14px;
+    border: 0;
+    list-style: none;
+    background-color: #d9d9d9;
 }
 
 .form-control label {
@@ -124,20 +159,35 @@ section {
     visibility: hidden;
 }
 
-.form-input {
-    height: 50px;
-    width: 500px;
-    background-color: #d9d9d9;
-    border-radius: 4px;
-    padding: 0 20px;
-    font-size: 14px;
-    border: 0;
-    margin: 0 auto;
-}
-
 .form-input::placeholder {
     color: #b2b2b2;
     font-size: 16px;
     font-weight: 500;
 }
+
+.btn-access {
+    width: 317px;
+    height: 60px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #5127A4;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+}
+
+.form-container h3 {
+    font-size: 64px;
+    font-weight: bold;
+    color: #241249;
+}
+
+
+
 

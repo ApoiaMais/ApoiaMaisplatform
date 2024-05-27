@@ -12,7 +12,12 @@ html, body {
     scroll-behavior: smooth;
 }
 
-/*--------------------------------navbar styles ---------------------*/
+section {
+    height: 100vh;
+}
+
+/** --------------------------------------- navbar styles ---------------------------- **/
+
 a, a:hover {
     text-decoration: none;
     color: unset;
@@ -66,78 +71,76 @@ ul {
     color: #241249;
 }
 
-.photo-perfil img {
-    width: 54px;
-    border-radius: 50%;
-    border: solid #5127A4 2px;
-}
-
-.perfil-card {
+.btn-sign-in {
+    cursor: pointer;
+    width: 124px;
+    height: 36px;
+    border: solid #5127A4 1px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 200px;
+    justify-content: center;
+    border-radius: 5px;
+    color: #5127A4;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 22px;
 }
 
-.name-perfil {
-    font-size: 16px;
+.btn-sign-up {
+    cursor: pointer;
+    background-color: #5127A4;
+    width: 124px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
     font-weight: bold;
+    font-size: 16px;
+}
+
+.btns-nav {
+    display: flex;
+}
+
+/*------------------------------- content styles --------------------------------------*/
+
+section {
+    padding-top: 50px;
+}
+
+.escolha-title {
+    width: 312px;
+    margin: 0 auto;
     color: #241249;
+    font-size: 42px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+
+.escolha-container {
+    display: flex;
+    justify-content: space-between;
+    width: 872px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.escolha-card {
+    height: 100%;
+    width: 312px;
+    border: solid #5127A4 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-/*------------------------------------------- content styles -----------------------------------*/
-
-section {
-    padding-top: 30px;
-}
-
-.form-container {
-    margin-top: 22px;
-}
-
-.container-register {
-    width: 1096px;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.container-register h2 {
+.escolha-card p {
     font-size: 64px;
     font-weight: bold;
-    color: #241249;
+    color: #7F56D9;
 }
-
-.form-control {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-control label {
-    display: none;
-    visibility: hidden;
-}
-
-.form-input {
-    height: 50px;
-    width: 500px;
-    background-color: #d9d9d9;
-    border-radius: 4px;
-    padding: 0 20px;
-    font-size: 14px;
-    border: 0;
-    margin: 0 auto;
-}
-
-.form-input::placeholder {
-    color: #b2b2b2;
-    font-size: 16px;
-    font-weight: 500;
-}
-

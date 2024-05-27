@@ -1,5 +1,6 @@
 package com.apoiamais.platform.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -92,4 +93,14 @@ public class PatientService {
 		entity.setNis(dto.getNis());
 		return entity;
 	}*/
+
+	public boolean save(Patient patient) {
+        try {
+            repository.save(patient);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

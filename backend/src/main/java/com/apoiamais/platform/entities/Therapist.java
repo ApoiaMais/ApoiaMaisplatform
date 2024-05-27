@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 @Table(name = "tb_therapist")
 public class Therapist extends User {
 	
-	
 	@Column(nullable = false, unique = true)
 	private String license;
 	
