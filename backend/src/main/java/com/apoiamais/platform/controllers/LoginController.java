@@ -29,7 +29,7 @@ public class LoginController {
         // Configurar as credenciais do cliente e do usuário
         String clientId = "myclientid";
         String clientSecret = "myclientsecret";
-        String tokenEndpoint = "http://your-auth-server/token"; // Endpoint de token OAuth2
+        String tokenEndpoint = "http://localhost:8080/token"; // Endpoint de token OAuth2
 
         // Criar o corpo da solicitação para obter o token de acesso
         HttpHeaders headers = new HttpHeaders();

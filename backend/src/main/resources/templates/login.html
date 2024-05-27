@@ -1,46 +1,64 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apoia+</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/loginStylle.CSS">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#">Dúvidas</a></li>
-                <li><a href="#"><span>Entrar</span></a></li>
-                <li><a href="#"><span class="sing">Cadastrar</span></a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-            <div class="cont">
-                <section class="left">
-                    <h2>Bem-vindo</h2>
-                    <p>entre com sua conta no Apoia+</p>
-                </section>
-                <section class="right">
-                    <form action="/login" method="post">
+    <div class="container mt-5">
+        <h1 class="text-center">Login</h1>
+        <div class="row mt-5">
+            <div class="col"></div>
+            <div class="col">
+                <form id="loginForm">
+                    <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" required>
-                        <br>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
                         <label for="password">Senha:</label>
-                        <input type="password" name="password" id="password" required>
-                        <br>
-                        <button type="submit">Login</button>
-                    </form>
-                </section>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="submitLoginForm()">Login</button>
+                </form>
             </div>
-    </main>
-    <script src="/backend/src/main/resources/static/js/login.js"></script>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script>
+        function submitLoginForm() {
+            var form = document.getElementById("loginForm");
+            var data = {
+                email: form.email.value,
+                password: form.password.value
+            };
+            var json = JSON.stringify(data);
+
+            // Requisição Fetch para enviar os dados para o backend
+            fetch("/authenticate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: json
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Login falhou");
+                }
+            })
+            .then(data => {
+                localStorage.setItem("accessToken", data.accessToken);
+                window.location.href = "/index";
+            })
+            .catch(error => {
+                console.error("Erro ao fazer login:", error);
+                alert("Erro ao fazer login: " + error.message);
+            });
+        }
+    </script>
 </body>
 </html>
