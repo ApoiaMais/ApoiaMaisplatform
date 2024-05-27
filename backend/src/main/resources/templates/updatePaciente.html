@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoia+</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/configcad.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#"><span>Entrar</span></a></li>
+                <li><a href="#"><span class="sing">Cadastrar</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="updateForm">
+            <img src="" alt="fotodousuario" placeholder="foto do usuario">
+            <label for="Nome">Nome:</label>
+            <input type="name" name="Nome" id="Nome" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <button type="submit" onclick="updateProfile()">Atualizar dados</button>
+        </section>
+    </main>
+    <footer>
+        <!-- Rodapé -->
+    </footer>
+
+    <script>
+        function updateProfile() {
+            const updateForm = document.getElementById("updateForm");
+            const name = updateForm.querySelector("#Nome").value;
+            const email = updateForm.querySelector("#email").value;
+            const password = updateForm.querySelector("#password").value;
+
+            const data = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+            fetch("/patients", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao atualizar o perfil");
+                }
+                alert("Perfil atualizado com sucesso!");
+                // Redirecionar para a página inicial ou outra página após a atualização bem-sucedida, se necessário
+            })
+            .catch(error => {
+                console.error("Erro ao atualizar o perfil:", error);
+                alert("Erro ao atualizar o perfil. Tente novamente mais tarde.");
+            });
+        }
+    </script>
+</body>
+</html>

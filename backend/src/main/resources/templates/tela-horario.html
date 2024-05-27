@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apoia+</title>
-    <link rel="stylesheet" th:href=@{/css/global.css}>
+    <link rel="stylesheet" th:href="@{/css/global.css}">
     <link rel="stylesheet" th:href="@{/css/telahora.css}">
+</head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li><a href="#">Contato</a></li>
-            <li><a href="#"><span>Entrar</span></a></li>
-            <li><a href="#"><span class="sing">Cadastrar</span></a></li>
+            <li><a th:href="@{/}">Início</a></li>
+            <li><a th:href="@{/sobre}">Sobre</a></li>
+            <li><a th:href="@{/servicos}">Serviços</a></li>
+            <li><a th:href="@{/contato}">Contato</a></li>
+            <li><a th:href="@{/login}"><span>Entrar</span></a></li>
+            <li><a th:href="@{/cadastro}"><span class="sing">Cadastrar</span></a></li>
         </ul>
     </nav>
 </header>
 <main>
     <section id="inicio">
-    <p>Agende sua consulta aqui</p>
+        <p>Agende sua consulta aqui</p>
         <div class="card">
             <div class="foto">
                 <div class="txt">
@@ -29,17 +30,16 @@
                 </div>
             </div>
         </div>
-    <form>
-        
-        <label for="date">Selecione uma data</label>
-        <input type="date" id="date" name="date">
-        <button type="submit" class="ajustes">Agendar uma consulta</button>
-    </form>
-    <input type="search" class="oi" id="search" placeholder="Q Pesquise...">
+        <form th:action="@{/agendar-consulta}" method="post">
+            <label for="date">Selecione uma data</label>
+            <input type="date" id="date" name="date" required>
+            <button type="submit" class="ajustes">Agendar uma consulta</button>
+        </form>
+        <input type="search" class="oi" id="search" placeholder="Pesquise...">
     </section>
 </main>
 <footer>
-
+    <!-- Conteúdo do rodapé -->
 </footer>
 </body>
 </html>
