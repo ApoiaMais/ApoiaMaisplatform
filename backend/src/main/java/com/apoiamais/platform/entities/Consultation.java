@@ -105,7 +105,12 @@ public class Consultation {
         this.duration = duration;
     }
     
+    public Set<User> getUsers() {
+            return users;
+        }
 
+
+    
 
 
     @Override
@@ -133,6 +138,9 @@ public class Consultation {
             return false;
         return true;
     }
+
+
+    
 
     
     

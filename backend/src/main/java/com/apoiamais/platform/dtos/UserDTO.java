@@ -11,12 +11,19 @@ import org.springframework.security.core.GrantedAuthority;
 import com.apoiamais.platform.entities.Role;
 import com.apoiamais.platform.entities.User;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
 public class UserDTO {
 	
 	private Long id;
+	@NotBlank(message = "Campo requerido")
 	private String name;
+	@Email(message = "Email Valido requerido")
 	private String email;
 	private String cpf;
+	@PastOrPresent(message = "Data futura não é valida")
 	private LocalDate birthDate;
 	private String uriPhoto;
 	private List<String> roles =  new ArrayList<>();

@@ -67,16 +67,16 @@ INSERT INTO tb_notification(id, text, moment, read, route, user_id) VALUES (8, '
 INSERT INTO tb_notification(id, text, moment, read, route, user_id) VALUES (9, 'Novo match no seu perfil', '2024-05-02 06:00:00', true, '/matches', 5);
 INSERT INTO tb_notification(id, text, moment, read, route, user_id) VALUES (10, 'Novo evento na sua cidade', '2024-05-02 05:30:00', false, '/events', 5);
 
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (1, '2024-05-01', 200.00, 1, 60);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (2, '2024-05-02', 250.00, 1, 45);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (3, '2024-05-03', 300.00, 2, 60);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (4, '2024-05-04', 350.00, 2, 45);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (5, '2024-05-05', 400.00, 3, 60);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (6, '2024-05-06', 450.00, 3, 45);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (7, '2024-05-07', 500.00, 0, 60);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (8, '2024-05-08', 550.00, 0, 45);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (9, '2024-05-09', 600.00, 1, 60);
-INSERT INTO tb_consultation(id, date, price, status, duration) VALUES (10, '2024-05-10', 650.00, 1, 45);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-01', 200.00, 1, 60);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-02', 250.00, 1, 45);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-03', 300.00, 2, 60);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-04', 350.00, 2, 45);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-05', 400.00, 3, 60);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-06', 450.00, 3, 45);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-07', 500.00, 0, 60);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-08', 550.00, 0, 45);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-09', 600.00, 1, 60);
+INSERT INTO tb_consultation(date, price, status, duration) VALUES ('2024-05-10', 650.00, 1, 45);
 
 INSERT INTO tb_report(consultation_id, date, description) VALUES (1, '2024-05-02 10:00:00', 'Consulta de rotina sem complicações');
 INSERT INTO tb_report(consultation_id, date, description) VALUES (2, '2024-05-02 11:00:00', 'Paciente relatou dores de cabeça frequentes');

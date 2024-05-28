@@ -8,9 +8,15 @@ import org.springframework.security.core.GrantedAuthority;
 import com.apoiamais.platform.entities.Role;
 import com.apoiamais.platform.entities.Therapist;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class TherapistDTO extends UserDTO {
 	
+	@NotBlank(message = "campo requerido")
 	private String license;
+	@NotBlank(message = "campo requerido")
+    @Size(min = 8)
 	private String Password;
 	
 	public TherapistDTO() {

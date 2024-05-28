@@ -24,6 +24,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "tb_user")
@@ -33,7 +34,7 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotBlank(message = "campo requerido")
 	private String name;
 	@Column(unique = true)
 	private String email;

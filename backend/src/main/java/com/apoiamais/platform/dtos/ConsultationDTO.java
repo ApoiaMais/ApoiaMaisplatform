@@ -1,17 +1,27 @@
 package com.apoiamais.platform.dtos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.apoiamais.platform.entities.Consultation;
 import com.apoiamais.platform.entities.Status;
+import com.apoiamais.platform.entities.User;
+
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public class ConsultationDTO {
 
     private Long id;
     private LocalDate date;
+    @PositiveOrZero(message = "numeros negativos são invalidos")
     private Double price;
     private Status status;
+    @Positive(message = "numeros negativos são invalidos")
     private Integer duration;
+
+    private List<UserDTO> users =  new ArrayList<>();
     
     public ConsultationDTO() {
     }
@@ -30,6 +40,10 @@ public class ConsultationDTO {
         this.price = consultation.getPrice();
         this.status = consultation.getStatus();
         this.duration = consultation.getDuration();
+        for(User entity : consultation.getUsers()) {
+            users.add(new UserDTO(entity));
+        }
+
     }
 
     public Long getId() {
@@ -72,6 +86,12 @@ public class ConsultationDTO {
         this.duration = duration;
     }
 
-    
+    public List<UserDTO> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserDTO> users) {
+        this.users = users;
+    }
 
 }

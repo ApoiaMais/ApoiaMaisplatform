@@ -9,15 +9,20 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.ConsultationDTO;
+import com.apoiamais.platform.dtos.UserDTO;
 import com.apoiamais.platform.entities.Consultation;
 import com.apoiamais.platform.repositories.ConsultationRepository;
+import com.apoiamais.platform.repositories.UserRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
-
+import com.apoiamais.platform.entities.User;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ConsultationService {
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Autowired
 	private ConsultationRepository repository;
@@ -80,7 +85,10 @@ public class ConsultationService {
 		entity.setDuration(dto.getDuration());
 		entity.setPrice(dto.getPrice());
 		entity.setStatus(dto.getStatus());
-		;
+		for(UserDTO item : dto.getUsers()) {
+            User user = userRepository.getReferenceById(item.getId());
+            entity.getUsers().add(user);
+        };
 		return entity;
 	}
 }
