@@ -1,64 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Login</h1>
-        <div class="row mt-5">
-            <div class="col"></div>
-            <div class="col">
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Senha:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="submitLoginForm()">Login</button>
-                </form>
-            </div>
-            <div class="col"></div>
+    <h2>Login</h2>
+    <form action="#" th:action="@{/login}" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
         </div>
-    </div>
-
-    <script>
-        function submitLoginForm() {
-            var form = document.getElementById("loginForm");
-            var data = {
-                email: form.email.value,
-                password: form.password.value
-            };
-            var json = JSON.stringify(data);
-
-            // Requisição Fetch para enviar os dados para o backend
-            fetch("/authenticate", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: json
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("Login falhou");
-                }
-            })
-            .then(data => {
-                localStorage.setItem("accessToken", data.accessToken);
-                window.location.href = "/index";
-            })
-            .catch(error => {
-                console.error("Erro ao fazer login:", error);
-                alert("Erro ao fazer login: " + error.message);
-            });
-        }
-    </script>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

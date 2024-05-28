@@ -16,6 +16,9 @@ Apoia Mais é um projeto que oferece consultas psicológicas gratuitas ou a baix
 - Spring Boot
 - JPA/Hibernate
 - Spring Security
+- Spring validation
+- ReactJS
+- Thymeleaf
 - Swagger/OpenAPI
 
 ## Instalação
@@ -55,8 +58,8 @@ Após rodar a aplicação, a API estará disponível em `http://localhost:8080`.
 - `POST /psychologists` - Cadastro de psicólogos
 - `POST /patients` - Cadastro de pacientes
 - `POST /assessments` - Avaliação social
-- `GET /appointments` - Listar consultas
-- `POST /appointments` - Agendar consulta
+- `GET /consultation` - Listar consultas
+- `POST /consultation` - Agendar consulta
 
 Você pode acessar a documentação da API no endpoint `/swagger-ui.html`.
 
@@ -78,6 +81,10 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 Se você tiver alguma dúvida ou sugestão, entre em contato:
 
-- Nome: Seu Nome
-- Email: seu.email@example.com
-- LinkedIn: [seu-linkedin](https://linkedin.com/in/seu-usuario)
+- Nome: Antoy Guilherme
+- Email: antonygcabral@gmail.com
+- LinkedIn: [linkedin](https://linkedin.com/in/antony-guilherme)
+
+- Nome: Guilherme Davino
+- Email: guilherme.1009@hotmail.com
+- LinkedIn: [linkedin](https://linkedin.com/in/guilherme-albuquerque-davino)

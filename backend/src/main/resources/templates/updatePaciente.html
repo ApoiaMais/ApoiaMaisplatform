@@ -11,12 +11,12 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#"><span>Entrar</span></a></li>
-                <li><a href="#"><span class="sing">Cadastrar</span></a></li>
+                <li><a th:href="@{#inicio}">Início</a></li>
+                <li><a th:href="@{#sobre}">Sobre</a></li>
+                <li><a th:href="@{#servicos}">Serviços</a></li>
+                <li><a th:href="@{#}">Contato</a></li>
+                <li><a th:href="@{/cadastroConsulta}">Cadastrar Consulta</a></li>
+                <li><a th:href="@{/therapists/update}">Alterar Dados</a></li>
             </ul>
         </nav>
     </header>

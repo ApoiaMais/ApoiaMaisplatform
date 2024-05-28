@@ -8,15 +8,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.apoiamais.platform.dtos.TherapistDTO;
+import com.apoiamais.platform.entities.Therapist;
 import com.apoiamais.platform.services.TherapistService;
 
 @RestController
@@ -55,4 +58,19 @@ public class TherapistController {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+
+	@GetMapping("/update")
+    public ModelAndView updateForm() {
+        ModelAndView modelAndView = new ModelAndView("updatePscicologo");
+        
+        return modelAndView;
+    }
+
+	@PostMapping("/update")
+    public String updateSubmit(@ModelAttribute Therapist therapists) {
+        // Lógica para atualizar os dados do psicólogo
+        // Exemplo: psicologoService.update(psicologo);
+        
+        return "redirect:/updatePscicologo"; // Redirecionar para a tela do psicólogo após a atualização
+    }
 }
