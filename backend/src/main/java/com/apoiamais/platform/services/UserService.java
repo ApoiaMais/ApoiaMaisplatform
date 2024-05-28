@@ -100,4 +100,8 @@ public class UserService implements UserDetailsService {
         repository.save(user);
     }
 
+    public User findByEmailAndPassword(String email, String password) {
+        return repository.findByEmailAndPassword(email, password);
+    }
+
 }
