@@ -88,3 +88,8 @@ Se você tiver alguma dúvida ou sugestão, entre em contato:
 - Nome: Guilherme Davino
 - Email: guilherme.1009@hotmail.com
 - LinkedIn: [linkedin](https://linkedin.com/in/guilherme-albuquerque-davino)
+
+- ## Em andamento testes de software
+- testes unitarios e de integração com junit
+- cobertura de testes com jaccoco
+- testes de api com mockmvc e restAssured
