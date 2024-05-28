@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Desculpe o Transtorno</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .mensagem-container {
+            text-align: center;
+            position: relative;
+        }
+        .ponto {
+            position: absolute;
+            opacity: 0;
+            animation: aparecer 2s forwards;
+        }
+        @keyframes aparecer {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .homenzinho {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+        }
+        .homenzinho img {
+            width: 100%;
+            animation: trabalhar 2s infinite linear;
+        }
+        @keyframes trabalhar {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensagem-container">
+        <div class="ponto" style="top: 0; left: 20px;">D</div>
+        <div class="ponto" style="top: 0; left: 40px;">e</div>
+        <div class="ponto" style="top: 0; left: 60px;">s</div>
+        <div class="ponto" style="top: 0; left: 80px;">c</div>
+        <div class="ponto" style="top: 0; left: 100px;">u</div>
+        <div class="ponto" style="top: 0; left: 120px;">l</div>
+        <div class="ponto" style="top: 0; left: 140px;">p</div>
+        <div class="ponto" style="top: 0; left: 160px;">e</div>
+        <div class="ponto" style="top: 0; left: 180px;">&nbsp;</div>
+        <div class="ponto" style="top: 0; left: 200px;">o</div>
+        <div class="ponto" style="top: 0; left: 220px;">&nbsp;</div>
+        <div class="ponto" style="top: 0; left: 240px;">t</div>
+        <div class="ponto" style="top: 0; left: 260px;">r</div>
+        <div class="ponto" style="top: 0; left: 280px;">a</div>
+        <div class="ponto" style="top: 0; left: 300px;">n</div>
+        <div class="ponto" style="top: 0; left: 320px;">s</div>
+        <div class="ponto" style="top: 0; left: 340px;">t</div>
+        <div class="ponto" style="top: 0; left: 360px;">o</div>
+        <div class="ponto" style="top: 0; left: 380px;">r</div>
+        <div class="ponto" style="top: 0; left: 400px;">n</div>
+        <div class="ponto" style="top: 0; left: 420px;">o</div>
+        <div class="ponto" style="top: 0; left: 440px;">,</div>
+        <div class="ponto" style="top: 20px; left: 440px;">&nbsp;</div> <!-- Quebra de linha -->
+        <div class="ponto" style="top: 40px; left: 20px;">e</div>
+        <div class="ponto" style="top: 40px; left: 40px;">s</div>
+        <div class="ponto" style="top: 40px; left: 60px;">t</div>
+        <div class="ponto" style="top: 40px; left: 80px;">a</div>
+        <div class="ponto" style="top: 40px; left: 100px;">m</div>
+        <div class="ponto" style="top: 40px; left: 120px;">o</div>
+        <div class="ponto" style="top: 40px; left: 140px;">s</div>
+        <div class="ponto" style="top: 40px; left: 160px;">&nbsp;</div>
+        <div class="ponto" style="top: 40px; left: 180px;">c</div>
+        <div class="ponto" style="top: 40px; left: 200px;">o</div>
+        <div class="ponto" style="top: 40px; left: 220px;">n</div>
+        <div class="ponto" style="top: 40px; left: 240px;">s</div>
+        <div class="ponto" style="top: 40px; left: 260px;">t</div>
+        <div class="ponto" style="top: 40px; left: 280px;">r</div>
+        <div class="ponto" style="top: 40px; left: 300px;">u</div>
+        <div class="ponto" style="top: 40px; left: 320px;">i</div>
+        <div class="ponto" style="top: 40px; left: 340px;">n</div>
+        <div class="ponto" style="top: 40px; left: 360px;">d</div>
+        <div class="ponto" style="top: 40px; left: 380px;">o</div>
+        <img class="homenzinho" th:src="@{/assets/labor-day.gif}" alt="estamos trabalhando">
+    </div>
+</body>
+</html>

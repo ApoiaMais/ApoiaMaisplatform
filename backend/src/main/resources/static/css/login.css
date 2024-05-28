@@ -157,6 +157,25 @@ h2{
     color: #5127A4;
 }
 
+.login{
+    display: flex;
+    position: relative;
+    width: 15vw;
+    height: 5vh;
+    color: #fff;
+    background-color: #5127A4;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
+    border: none;
+}
+
 button{
     display: flex;
     position: relative;

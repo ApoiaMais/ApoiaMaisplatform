@@ -40,6 +40,11 @@ public class LoginController {
     public String telaPsicologo() {
         return "tela-psicologo";
     }
+
+    @GetMapping("/tela-paciente")
+    public String telaPaciente() {
+        return "tela-paciente";
+    }
 }
 
 
