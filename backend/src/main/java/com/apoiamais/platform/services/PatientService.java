@@ -93,7 +93,7 @@ public class PatientService {
 		entity.setBirthDate(dto.getBirthDate());
 		entity.setUriPhoto(dto.getUriPhoto());
 		entity.setNis(dto.getNis());
-		entity.setPassword("123456789101213");
+		entity.setPassword(dto.getPassword());
 		return entity;
 		
 	}

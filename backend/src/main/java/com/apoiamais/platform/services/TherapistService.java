@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.TherapistDTO;
+import com.apoiamais.platform.entities.Role;
 import com.apoiamais.platform.entities.Therapist;
+import com.apoiamais.platform.repositories.RoleRepository;
 import com.apoiamais.platform.repositories.TherapistRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
@@ -19,6 +21,9 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class TherapistService {
+
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@Autowired
 	private TherapistRepository repository;
@@ -40,6 +45,8 @@ public class TherapistService {
 	public TherapistDTO insert(TherapistDTO dto) {
 		Therapist entity = new Therapist();
 		dtoToEntity(dto, entity);
+		Role role = roleRepository.getReferenceById(2L);
+		entity.getRoles().add(role);
 		entity = repository.save(entity);
 		return new TherapistDTO(entity);
 	}
@@ -78,7 +85,7 @@ public class TherapistService {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
 		entity.setBirthDate(dto.getBirthDate());
-		entity.setPassword("123456789");
+		entity.setPassword(dto.getPassword());
 		entity.setCpf(dto.getCpf());
 		entity.setUriPhoto(dto.getUriPhoto());
 		entity.setLicense(dto.getLicense());

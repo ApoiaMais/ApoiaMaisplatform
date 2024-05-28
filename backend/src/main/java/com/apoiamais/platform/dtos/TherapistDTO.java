@@ -11,6 +11,7 @@ import com.apoiamais.platform.entities.Therapist;
 public class TherapistDTO extends UserDTO {
 	
 	private String license;
+	private String Password;
 	
 	public TherapistDTO() {
 		
@@ -18,9 +19,10 @@ public class TherapistDTO extends UserDTO {
 
 	
 	
-	public TherapistDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto, List<Role> roles, String license) {
+	public TherapistDTO(Long id, String name, String email, String cpf, LocalDate birthDate, String uriPhoto, List<Role> roles, String license,String Password) {
 		super(id, name, email, cpf, birthDate, uriPhoto, roles);
 		this.license = license;
+		this.Password = Password;
 	}
 
 
@@ -28,6 +30,7 @@ public class TherapistDTO extends UserDTO {
 	public TherapistDTO(Therapist entity) {
 		super(entity.getId(), entity.getName(), entity.getEmail(), entity.getCpf(), entity.getBirthDate(), entity.getUriPhoto());
 		this.license = entity.getLicense();
+		this.Password = entity.getPassword();
 		for (GrantedAuthority role : entity.getAuthorities()) {
 			this.getRoles().add(role.getAuthority());
 		}
@@ -40,6 +43,17 @@ public class TherapistDTO extends UserDTO {
 	public void setLicense(String license) {
 		this.license = license;
 	}
-	
 
+
+
+	public String getPassword() {
+		return Password;
+	}
+
+
+
+	public void setPassword(String password) {
+		Password = password;
+	}
+	
 }
