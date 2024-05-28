@@ -5,13 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apoiamais.platform.dtos.PatientDTO;
 import com.apoiamais.platform.entities.Patient;
+import com.apoiamais.platform.entities.Role;
+import com.apoiamais.platform.entities.User;
 import com.apoiamais.platform.repositories.PatientRepository;
+import com.apoiamais.platform.repositories.RoleRepository;
 import com.apoiamais.platform.services.exceptions.DatabaseException;
 import com.apoiamais.platform.services.exceptions.ResourceNotFoundException;
 
@@ -21,7 +25,13 @@ import jakarta.persistence.EntityNotFoundException;
 public class PatientService {
 
 	@Autowired
+	private RoleRepository roleRepository;
+
+	@Autowired
 	private PatientRepository repository;
+
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 
 	@Transactional(readOnly = true)
 	public PatientDTO findById(Long id) {
@@ -40,6 +50,8 @@ public class PatientService {
 	public PatientDTO insert(PatientDTO dto) {
 		Patient entity = new Patient();
 		dtoToEntity(dto, entity);
+		Role roles = roleRepository.getReferenceById(1L);
+		entity.getRoles().add(roles);
 		entity = repository.save(entity);
 		return new PatientDTO(entity);
 	}
@@ -83,7 +95,10 @@ public class PatientService {
 		entity.setNis(dto.getNis());
 		entity.setPassword("123456789101213");
 		return entity;
+		
 	}
+
+	
 
 	/*private Patient minDtoToEntity(PatientMinDTO dto, Patient entity) {
 		entity.setName(dto.getName());
@@ -102,5 +117,10 @@ public class PatientService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return repository.save(user);
     }
 }

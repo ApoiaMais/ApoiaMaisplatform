@@ -30,6 +30,8 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository repository;
 	
+	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
@@ -103,5 +105,6 @@ public class UserService implements UserDetailsService {
     public User findByEmailAndPassword(String email, String password) {
         return repository.findByEmailAndPassword(email, password);
     }
+	
 
 }

@@ -10,6 +10,8 @@ public class Patient extends User {
 
 	@Column(nullable = false, unique = true)
 	private String nis;
+
+	
 	
 	public Patient() {
 		

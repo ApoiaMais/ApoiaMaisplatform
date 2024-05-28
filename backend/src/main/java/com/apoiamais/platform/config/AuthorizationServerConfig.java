@@ -66,8 +66,6 @@ public class AuthorizationServerConfig {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
-	
 
 	@Bean
 	@Order(2)
@@ -195,4 +193,6 @@ public class AuthorizationServerConfig {
 		}
 		return keyPair;
 	}
+
+	
 }

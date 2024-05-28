@@ -67,7 +67,7 @@ public class CustomPasswordAuthenticationConverter implements AuthenticationConv
 			}
 		});
 		
-		Authentication clientPrincipal = SecurityContextHolder.getContext().getAuthentication();	
+		Authentication clientPrincipal = SecurityContextHolder.getContext().getAuthentication();
 		return new CustomPasswordAuthenticationToken(clientPrincipal, requestedScopes, additionalParameters);
 	}
 

@@ -57,6 +57,7 @@
                     data[item.name] = item.value;
                 }
             }
+
             var json = JSON.stringify(data);
             console.log(json); // Para verificar no console do navegador
 
@@ -64,7 +65,8 @@
             fetch("/patients", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    
                 },
                 body: json
             })
@@ -73,7 +75,7 @@
                     window.location.href = "/"; // Redireciona para o index em caso de sucesso
                 } else {
                     return response.json().then(errorData => {
-                        throw new Error(errorData.message || "Erro ao cadastrar terapeuta");
+                        throw new Error(errorData.message || "Erro ao cadastrar paciente");
                     });
                 }
             })
@@ -82,6 +84,8 @@
                 alert("Erro: " + error.message); // Exibe uma mensagem de erro
             });
         }
+
     </script>
 </body>
 </html>
+

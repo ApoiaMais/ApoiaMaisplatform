@@ -2,18 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
-    <h1>Login</h1>
-    <form th:action="@{/login}" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" />
-        <br />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
-        <br />
-        <input type="submit" value="Login" />
-    </form>
-    <p th:if="${error}" th:text="${error}">Invalid email or password</p>
+    <header>
+        <nav aria-label="Main Navigation">
+            <h1 class="title">Apoia+</h1>
+            <div class="navigation-container">
+                <ul>
+                    <li><a th:href="@{/inicio}">Início</a></li>
+                    <li><a th:href="@{/sobre}">Sobre</a></li>
+                    <li><a th:href="@{/servicos}">Serviços</a></li>
+                    <li><a th:href="@{/contato}">Contato</a></li>
+                </ul>
+            </div>
+            <div class="btns-nav">
+                <div class="btn-sign-in"><a th:href="@{/login}">Entrar</a></div>
+                <div class="btn-sign-up"><a th:href="@{/selecao}">Cadastrar</a></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="cont">
+            <section class="left">
+                <h2>Bem-vindo</h2>
+                <p>entre com sua conta no Apoia+</p>
+            </section>
+            <section class="right">
+            <form th:action="@{/login}" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" />
+                <br />
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" />
+                <br />
+                <input type="submit" value="Login" />
+            </form>
+            <p th:if="${error}" th:text="${error}">Invalid email or password</p>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

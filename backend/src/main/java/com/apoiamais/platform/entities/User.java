@@ -158,6 +158,9 @@ public class User implements UserDetails {
     	roles.add(role);
     }
     
+	public Set<Role> getRoles() {
+		return roles;
+	}
     
 	public boolean hasRole(String roleName) {
 		for (Role role : roles) {
@@ -212,6 +215,8 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	
 
 	
 }
