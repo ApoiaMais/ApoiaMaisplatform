@@ -93,7 +93,12 @@ Se você tiver alguma dúvida ou sugestão, entre em contato:
 - testes unitarios e de integração com junit
 - cobertura de testes com jaccoco
 - testes de api com mockmvc e restAssured
-- cadastro e usuario encriptados
+- cadastro de usuario encriptados
 - front-end typescript(TS), reactJS e Axios
+
+- # Modelo conceitual
+
+![final-conceitual](https://github.com/ApoiaMais/ApoiaMaisplatform/assets/51931679/74401f08-702a-4d2a-a59a-095cc391e7e5)
+
 
 
